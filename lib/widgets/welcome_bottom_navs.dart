@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:furnist_app/screens/login.dart';
+import 'package:furnist_app/screens/register.dart';
 import 'package:furnist_app/widgets/components/outline_btn.dart';
 import 'package:furnist_app/widgets/components/solid_btn.dart';
+import 'package:get/get.dart';
 
 class WelcomeBottomNavs extends StatelessWidget {
   const WelcomeBottomNavs({Key? key}) : super(key: key);
@@ -13,9 +16,19 @@ class WelcomeBottomNavs extends StatelessWidget {
         children: [
           SolidBtn(
             title: 'Login',
+            onTap: () {
+              Get.to(() => LoginPage());
+            },
           ),
-          OutlineBtn(title: 'Register'),
+          OutlineBtn(
+            title: 'Register',
+            onTap: () {
+              Get.to(() => RegisterPage());
+            },
+          ),
+          
         ],
+        
       ),
     );
   }
