@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furnist_app/screens/home.dart';
 import 'package:furnist_app/screens/onboard.dart';
 import 'package:furnist_app/screens/register.dart';
 import 'package:furnist_app/screens/welcome.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: OnboardPages(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }

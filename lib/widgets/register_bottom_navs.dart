@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furnist_app/widgets/components/outline_btn.dart';
 import 'package:furnist_app/widgets/components/solid_btn.dart';
+import 'package:get/get.dart';
 
 class RegisterBottomNavs extends StatelessWidget {
   const RegisterBottomNavs({Key? key}) : super(key: key);
@@ -37,13 +38,21 @@ class RegisterBottomNavs extends StatelessWidget {
             },
           ),
           Container(
-            child: RichText(
-              text: TextSpan(children: [
-                TextSpan(text: "Don't have any account ?"),
-                TextSpan(
-                    text: "Sign Up",
-                    style: TextStyle(fontWeight: FontWeight.w500)),
-              ]),
+            width: Get.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Don't have any account ? "),
+                GestureDetector(
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(fontWeight: FontWeight.w900),
+                  ),
+                  onTap: () {
+                    print("Hello World");
+                  },
+                )
+              ],
             ),
           )
         ],
