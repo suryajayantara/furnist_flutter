@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 class ProductCard extends StatelessWidget {
   // const ProductCard({Key? key}) : super(key: key);
 
-  
+  final String title;
+  final int price;
+
+  ProductCard({this.title = "", this.price = 0});
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,7 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Wooden Chair",
+                  title,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 RichText(
@@ -37,7 +41,7 @@ class ProductCard extends StatelessWidget {
                             fontWeight: FontWeight.w800),
                         children: [
                       TextSpan(text: "\$ "),
-                      TextSpan(text: "30")
+                      TextSpan(text: "${price}")
                     ]))
               ],
             ),

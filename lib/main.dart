@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furnist_app/screens/detail.dart';
 import 'package:furnist_app/screens/home.dart';
 import 'package:furnist_app/screens/login.dart';
 import 'package:furnist_app/screens/onboard.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: LoginPage(),
+      home: DetailPage(),
       debugShowCheckedModeBanner: false,
     );
   }
