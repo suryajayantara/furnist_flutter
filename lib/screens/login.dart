@@ -28,15 +28,12 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         body: Container(
+          width: Get.width,
           height: Get.height,
-          child: ListView(
-            shrinkWrap: true,
+          child: Stack(
             children: [
-              Container(
-                width: Get.width,
-                height: Get.height,
-                child: Stack(
-                  children: [
+              Stack(
+                children: [
                     Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: 20.0, horizontal: 30.0),
@@ -121,16 +118,15 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    Positioned(
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        child: Column(
-                          children: [RegisterBottomNavs()],
-                        ))
                   ],
-                ),
-              )
+              ),
+              Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Column(
+                    children: [RegisterBottomNavs()],
+                  ))
             ],
           ),
         ));

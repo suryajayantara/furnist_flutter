@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furnist_app/widgets/components/category_card.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,9 +11,32 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int activePages = 1;
+  List<Widget> _categoryList = [];
+
+
 
   @override
   Widget build(BuildContext context) {
+
+
+   _categoryList = [
+      CategoryCard(
+        onTap: () {},
+        title: "Sofa",
+        url: 'assets/categories/cat-1.png',
+      ),
+      CategoryCard(
+        onTap: () {},
+        title: "Cabinet",
+        url: 'assets/categories/cat-2.png',
+      ),
+      CategoryCard(
+        onTap: () {},
+        title: "Chair",
+        url: 'assets/categories/cat-1.png',
+      ),
+    ];
+
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100),
@@ -44,7 +68,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        body: Column(
+        body: ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.vertical,
+        children: [
+          Column(
           children: [
             Container(
                 height: 200,
@@ -131,32 +159,136 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                     'Categories',
-                    style: TextStyle(fontWeight: FontWeight.w700),
-                  ),
-                  Spacer(),
-                  Text('Show All'),
-                ],
+                    style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                    ),
+                    Spacer(),
+                    Text('Show All'),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              height: 90,
-              margin: EdgeInsets.all(10),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image:
-                                AssetImage('assets/carousel/carousel-1.png'))),
-                    child: Center(child: Text('Hello')),
-                  ),
-                ],
+              Container(
+                height: 100,
+                margin: EdgeInsets.all(10),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children:
+                      // CategoryCard(title: "Hello"), Buat Disini
+                      _categoryList,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 0),
+                child: Row(
+                  children: [
+                    Text(
+                      'New Arrivals',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                    ),
+                    Spacer(),
+                    Text('Show All'),
+                  ],
+                ),
+              ),
+              Container(
+                height: 90,
+                margin: EdgeInsets.all(10),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.all(5),
+                      child: Stack(
+                        children: [
+                          Image(
+                              image:
+                                  AssetImage('assets/carousel/carousel-1.png')),
+                          Container(
+                            color: Colors.black,
+                            height: Get.width,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.all(5),
+                      child: Stack(
+                        children: [
+                          Image(
+                              image:
+                                  AssetImage('assets/carousel/carousel-1.png')),
+                          Container(
+                            color: Colors.black,
+                            height: Get.width,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.all(5),
+                      child: Stack(
+                        children: [
+                          Image(
+                              image:
+                                  AssetImage('assets/carousel/carousel-1.png')),
+                          Container(
+                            color: Colors.black,
+                            height: Get.width,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.all(5),
+                      child: Stack(
+                        children: [
+                          Image(
+                              image:
+                                  AssetImage('assets/carousel/carousel-1.png')),
+                          Container(
+                            color: Colors.black,
+                            height: Get.width,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                
               ),
             )
           ],
-        ));
+        )
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat_bubble_outline_rounded),
+            title: Text('Chat'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shop_2_outlined),
+            title: Text('Cart'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_add_alt_1_outlined),
+            title: Text('Profile'),
+          ),
+        ],
+        currentIndex: 2,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+      ),
+    );
   }
 }

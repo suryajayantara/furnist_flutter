@@ -6,6 +6,9 @@ class SolidBtn extends StatelessWidget {
   final Function()? onTap;
   SolidBtn({this.title = "Helo",this.onTap});
   @override
+
+
+  
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
