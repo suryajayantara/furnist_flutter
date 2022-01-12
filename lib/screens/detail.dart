@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:furnist_app/controller/product.dart';
+import 'package:furnist_app/screens/home.dart';
+import 'package:furnist_app/widgets/components/product_card.dart';
 import 'package:get/get.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   // const DetailPage({Key? key}) : super(key: key);
+
+  @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  final product = Get.put(ProductController());
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +38,16 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
                 actions: [
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: Icon(
-                      Icons.shopping_bag_outlined,
-                      color: Colors.black,
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => HomePage());
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(right: 20),
+                      child: Icon(
+                        Icons.shopping_bag_outlined,
+                        color: Colors.black,
+                      ),
                     ),
                   )
                 ],
@@ -51,7 +67,7 @@ class DetailPage extends StatelessWidget {
                         topRight: Radius.circular(20)),
                     color: Colors.grey[300],
                   ),
-                  height: 900,
+                  height: 700,
                   child: Container(
                     margin: EdgeInsets.all(25),
                     child: Column(
@@ -173,15 +189,24 @@ class DetailPage extends StatelessWidget {
                                   flex: 2,
                                   child: Row(
                                     children: [
-                                      Container(
-                                        height: 35,
-                                        width: 35,
-                                        decoration:
-                                            BoxDecoration(color: Colors.black),
-                                        child: Center(
-                                          child: Icon(
-                                            Icons.remove,
-                                            color: Colors.white,
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            if (count > 0) {
+                                              count -= 1;
+                                            }
+                                          });
+                                        },
+                                        child: Container(
+                                          height: 35,
+                                          width: 35,
+                                          decoration: BoxDecoration(
+                                              color: Colors.black),
+                                          child: Center(
+                                            child: Icon(
+                                              Icons.remove,
+                                              color: Colors.white,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -189,18 +214,25 @@ class DetailPage extends StatelessWidget {
                                         height: 35,
                                         width: 35,
                                         child: Center(
-                                          child: Text("1"),
+                                          child: Text("${count}"),
                                         ),
                                       ),
-                                      Container(
-                                        height: 35,
-                                        width: 35,
-                                        decoration:
-                                            BoxDecoration(color: Colors.black),
-                                        child: Center(
-                                          child: Icon(
-                                            Icons.add,
-                                            color: Colors.white,
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            count += 1;
+                                          });
+                                        },
+                                        child: Container(
+                                          height: 35,
+                                          width: 35,
+                                          decoration: BoxDecoration(
+                                              color: Colors.black),
+                                          child: Center(
+                                            child: Icon(
+                                              Icons.add,
+                                              color: Colors.white,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -210,6 +242,37 @@ class DetailPage extends StatelessWidget {
                           ),
                         ),
                         Divider(),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 0.0, vertical: 10.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                'New Arrivals',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700, fontSize: 20),
+                              ),
+                              Spacer(),
+                              Text('Show All'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 250,
+                          child: GetBuilder<ProductController>(
+                            builder: (controller) {
+                              return ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: controller.productLists.length,
+                                itemBuilder: (ctx, index) => ProductCard(
+                                  title: product.productLists[index].title!,
+                                  price: product.productLists[index].price!,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -220,7 +283,7 @@ class DetailPage extends StatelessWidget {
           Positioned(
               bottom: 0,
               child: Container(
-                // color: Colors.red,
+                color: Colors.white,
                 height: 100,
                 width: Get.width,
                 child: Container(
