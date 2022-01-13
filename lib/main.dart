@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furnist_app/screens/cart.dart';
 import 'package:furnist_app/screens/detail.dart';
 import 'package:furnist_app/screens/home.dart';
 import 'package:furnist_app/screens/login.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: DetailPage(),
+      home: CartPage(),
       debugShowCheckedModeBanner: false,
     );
   }
