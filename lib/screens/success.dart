@@ -56,7 +56,7 @@ class _SuccessPageState extends State<SuccessPage> {
             ),
             Container(
               width: 300,
-              height: 48,
+              height: 60,
               child: SolidBtn(
                 title: "Continue Shoppingg",
               ),

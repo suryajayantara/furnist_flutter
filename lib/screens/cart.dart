@@ -31,7 +31,7 @@ class CartPage extends StatelessWidget {
               children: [
                 CartCard(),
                 Divider(),
-                CartCard(),
+                CartCard1(),
                 Divider(),
                 CartCard(),
                 Divider(),
