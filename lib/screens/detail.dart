@@ -65,7 +65,7 @@ class _DetailPageState extends State<DetailPage> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20)),
-                    color: Colors.grey[300],
+                    color: Colors.white,
                   ),
                   height: 700,
                   child: Container(
