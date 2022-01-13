@@ -23,69 +23,81 @@ class CartPage extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-            child: ListView(
-              children: [
-                CartCard(),
-                Divider(),
-                CartCard1(),
-                Divider(),
-                CartCard(),
-                Divider(),
-                CartCard(),
-                Divider(),
-                CartCard(),
-                Divider(),
-              ],
+          Expanded(
+            flex: 3,
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              child: ListView(
+                children: [
+                  CartCard(),
+                  Divider(),
+                  CartCard1(),
+                  Divider(),
+                  CartCard(),
+                  Divider(),
+                  CartCard(),
+                  Divider(),
+                  CartCard(),
+                  Divider(),
+                ],
+              ),
             ),
           ),
-          Positioned(
-              bottom: 0,
-              child: Container(
-                child: Column(
+          Container(
+            color: Colors.white,
+            child: Expanded(
+                flex: 1,
+                child: Stack(
                   children: [
-                    Divider(),
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "SubTotal",
-                                  style: TextStyle(
-                                      color: Colors.grey[400],
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600),
+                    Container(
+                      child: Column(
+                        children: [
+                          Divider(),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 20.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "SubTotal",
+                                        style: TextStyle(
+                                            color: Colors.grey[400],
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      Text("\$8989",
+                                          style: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w700))
+                                    ],
+                                  ),
                                 ),
-                                Text("\$8989",
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700))
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: SolidBtn(
-                            title: "Checkout",
-                          ),
-                        )
-                      ],
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: SolidBtn(
+                                  title: "Checkout",
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      height: 100,
+                      width: Get.width,
+                      color: Colors.white,
                     )
                   ],
-                ),
-                height: 100,
-                width: Get.width,
-                color: Colors.white,
-              ))
+                )),
+          )
         ],
       ),
     );
